@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graph Visualization</title>
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="57x57" href="res/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="res/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="res/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="res/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="res/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="res/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="res/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="res/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="res/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="res/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="res/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="res/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="res/favicon/favicon-16x16.png">
+    <link rel="manifest" href="res/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="res/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+
+    <!-- DHTMLX Layout -->
+    <link rel="stylesheet" href="dhtmlx3/dhtmlxLayout/codebase/dhtmlxlayout.css">
+    <link rel="stylesheet" href="dhtmlx3/dhtmlxLayout/codebase/skins/dhtmlxlayout_dhx_blue.css">
+    <link rel="stylesheet" href="dhtmlx3/dhtmlxLayout/codebase/skins/dhtmlxlayout_dhx_skyblue.css">
+    <link rel="stylesheet" href="dhtmlx3/dhtmlxLayout/codebase/skins/dhtmlxlayout_dhx_web.css">
+
+    <!-- DHTMLX Menu -->
+    <link rel="stylesheet" href="dhtmlx3/dhtmlxMenu/codebase/skins/dhtmlxmenu_dhx_blue.css">
+    <link rel="stylesheet" href="dhtmlx3/dhtmlxMenu/codebase/skins/dhtmlxmenu_dhx_skyblue.css">
+
+    <!-- DHTMLX Grid -->
+    <link rel="stylesheet" href="dhtmlx3/dhtmlxGrid/codebase/dhtmlxgrid.css">
+    <link rel="stylesheet" href="dhtmlx3/dhtmlxGrid/codebase/dhtmlxgrid_skins.css">
+    <link rel="stylesheet" href="dhtmlx3/dhtmlxGrid/codebase/skins/dhtmlxgrid_dhx_skyblue.css">
+
+    <!-- DHTMLX Windows -->
+    <link rel="stylesheet" href="dhtmlx3/dhtmlxWindows/codebase/dhtmlxwindows.css">
+    <link rel="stylesheet" href="dhtmlx3/dhtmlxWindows/codebase/skins/dhtmlxwindows_dhx_skyblue.css">
+    <link rel="stylesheet" href="dhtmlx3/dhtmlxWindows/codebase/skins/dhtmlxwindows_dhx_blue.css">
+    <link rel="stylesheet" href="dhtmlx3/dhtmlxWindows/codebase/skins/dhtmlxwindows_dhx_web.css">
+
+    <!-- DHTMLX Editor -->
+    <link rel="stylesheet" href="dhtmlx3/dhtmlxEditor/codebase/dhtmlxeditor.css">
+    <link rel="stylesheet" href="dhtmlx3/dhtmlxEditor/codebase/skins/dhtmlxeditor_dhx_blue.css">
+
+    <!-- DHTMLX Toolbar -->
+    <link rel="stylesheet" href="dhtmlx3/dhtmlxToolbar/codebase/skins/dhtmlxtoolbar_dhx_blue.css">
+
+    <!-- DHTMLX Form -->
+    <link rel="stylesheet" href="dhtmlx3/dhtmlxForm/codebase/skins/dhtmlxform_dhx_skyblue.css">
+
+    <!-- DHTMLX Tabbar -->
+    <link rel="stylesheet" href="dhtmlx3/dhtmlxTabbar/codebase/dhtmlxtabbar.css">
+
+    <!-- Own CSS -->
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <div id="root">
+        <div id="graph">
+        </div>
+    </div>
+
+    <!-- DHTMLX Layout -->
+    <script src="dhtmlx3/dhtmlxLayout/codebase/dhtmlxcommon.js"></script>
+    <script src="dhtmlx3/dhtmlxLayout/codebase/dhtmlxcontainer.js"></script>
+    <script src="dhtmlx3/dhtmlxLayout/codebase/dhtmlxlayout.js"></script>
+
+    <!-- DHTMLX Menu -->
+    <script src="dhtmlx3/dhtmlxMenu/codebase/dhtmlxcommon.js"></script>
+    <script src="dhtmlx3/dhtmlxMenu/codebase/dhtmlxmenu.js"></script>
+    <script src="dhtmlx3/dhtmlxMenu/codebase/ext/dhtmlxmenu_ext.js"></script>
+
+    <!-- DHTMLX Grid -->
+    <script src="dhtmlx3/dhtmlxGrid/codebase/dhtmlxcommon.js"></script>
+    <script src="dhtmlx3/dhtmlxGrid/codebase/dhtmlxgrid.js"></script>
+    <script src="dhtmlx3/dhtmlxGrid/codebase/dhtmlxgridcell.js"></script>
+
+    <!-- DHTMLX Windows -->
+    <script src="dhtmlx3/dhtmlxWindows/codebase/dhtmlxcommon.js"></script>
+    <script src="dhtmlx3/dhtmlxWindows/codebase/dhtmlxcontainer.js"></script>
+    <script src="dhtmlx3/dhtmlxWindows/codebase/dhtmlxwindows.js"></script>
+
+    <!-- DHTMLX Toolbar -->
+    <script src="dhtmlx3/dhtmlxToolbar/codebase/dhtmlxcommon.js"></script>
+    <script src="dhtmlx3/dhtmlxToolbar/codebase/dhtmlxtoolbar.js"></script>
+    
+    <!-- DHTMLX Form -->
+    <script src="dhtmlx3/dhtmlxForm/codebase/dhtmlxcommon.js"></script>
+    <script src="dhtmlx3/dhtmlxForm/codebase/dhtmlxform.js"></script>
+
+
+    <!-- DHTMLX DataStore -->
+    <script src="dhtmlx3/dhtmlxDataStore/codebase/datastore.js"></script>
+
+    <!-- Cytoscape -->
+    <script src="cytoscape.js-3.23.0/dist/cytoscape.min.js"></script>
+    
+    <!-- OWN script -->
+    <script src="js/commonElements.js"></script>
+    <script src="js/constants.js"></script>
+    <script src="js/init.js"></script>
+    <script src="js/clickHandlers.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
