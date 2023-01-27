@@ -2,6 +2,9 @@ initializeLayout();
 initializeMenu();
 initializeWindow();
 initializeNodeAdditionForm();
+initializeServiceCreationWindow();
+initializeServiceCreationTabbbar();
+serviceCreationWindow.hide();
 
 cytoObject = cytoscape({
     container: document.getElementById("graph"),

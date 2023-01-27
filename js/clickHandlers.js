@@ -1,7 +1,11 @@
 function menuClickHandler(id) {
     if (id == "file_new_node") {
         nodeAdditionWizardBox.show();
-    } else if (id == "file_new_link") {
+    } 
+    else if (id == "file_new_service") {
+        serviceCreationWindow.show();
+    }
+    else if (id == "file_new_link") {
         if (linkArray.length == 2) {
             const requestBody = {
                 source : linkArray[0],
@@ -49,4 +53,8 @@ function nodeAdditionFormHandler(id) {
             })
         }
     }
+}
+
+function serviceCreationHandler(id) {
+    console.log(id);
 }

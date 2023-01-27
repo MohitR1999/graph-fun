@@ -4,3 +4,7 @@ let nodeAdditionWizardBox = null;
 let nodeAdditionForm = null;
 let bodyCell = null;
 let cytoObject = null;
+let serviceCreationForm = null;
+let serviceCreationWindow = null;
+let serviceCreationTree = null;
+let serviceCreationTabbar = null;
