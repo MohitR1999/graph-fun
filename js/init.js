@@ -13,10 +13,17 @@ function initializeLayout() {
 
 function initializeMenu() {
     menuBar = appLayout.attachMenu();
+    // Add parent options
     menuBar.addNewSibling(null, "file", "File", false);
+    menuBar.addNewSibling("file", "view", "View", false);
+    // Add child options for File
     menuBar.addNewChild("file", 0, "file_new_node", "Add a node", false);
-    menuBar.addNewChild("file", 1, "file_new_link", "Add a link", false);
+    menuBar.addNewChild("file", 1, "file_new_link", "Create a link", false);
     menuBar.addNewChild("file", 2, "file_new_service", "Create a service", false);
+    // Add child options for View
+    menuBar.addNewChild("view", 0, "file_view_nodes", "View all nodes", false);
+    menuBar.addNewChild("view", 1, "file_view_links", "View all links", false);
+    menuBar.addNewChild("view", 2, "file_view_services", "View all services", false);
     menuBar.attachEvent("onClick", menuClickHandler);
 }
 
