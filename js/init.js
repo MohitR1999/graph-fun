@@ -1,8 +1,12 @@
 function initializeLayout() {
-    appLayout = new dhtmlXLayoutObject(document.body, "1C", "dhx_skyblue");
-    bodyCell = appLayout.cells("a");
+    appLayout = new dhtmlXLayoutObject(document.body, "2U", "dhx_skyblue");
+    bodyCell = appLayout.cells("b");
     bodyCell.hideHeader();
     bodyCell.attachObject("graph");
+
+    sideGridCell = appLayout.cells("a");
+    sideGridCell.hideHeader();
+    sideGridCell.setWidth(400);
     appLayout.dhxWins.setEffect("move", true);
     appLayout.dhxWins.setEffect("resize", true);
 }
@@ -32,7 +36,7 @@ function initializeWindow() {
 function initializeServiceCreationWindow() {
     serviceCreationWindow = appLayout.dhxWins.createWindow("createService", SERVICE_CREATION_WINDOW_PROPS.X, SERVICE_CREATION_WINDOW_PROPS.Y, SERVICE_CREATION_WINDOW_PROPS.WIDTH, SERVICE_CREATION_WINDOW_PROPS.HEIGHT);
     serviceCreationWindow.setText("Create service");
-    serviceCreationWindow.attachStatusBar().setText("Create a service using the selected nodes");
+    serviceCreationWindow.attachStatusBar().setText("Create a service specifying certain attributes");
     serviceCreationWindow.center();
     serviceCreationWindow.keepInViewport(true);
     // serviceCreationWindow.hide();
@@ -73,8 +77,21 @@ function initializeServiceCreationTree() {
 
 function initializeServiceCreationTabbbar() {
     serviceCreationTabbar = serviceCreationWindow.attachTabbar();
-    // serviceCreationTabbar.setImagePath("dhtmlx3/dhtmlxTabbar/codebase/imgs/winbiscarf/");
-    serviceCreationTabbar.setStyle("winScarf");
+    serviceCreationTabbar.setImagePath("dhtmlx3/dhtmlxTabbar/codebase/imgs/");
     serviceCreationTabbar.addTab("general_attributes", "General Attributes");
     serviceCreationTabbar.addTab("endpoints", "Endpoints");
+    serviceCreationTabbar.setTabActive("general_attributes");
+    generalAttributesForm = serviceCreationTabbar.cells("general_attributes").attachForm();
+    generalAttributesForm.loadStruct(SERVICE_CREATION_FORM_PROPS, "json");
+}
+
+function initializeGraphContextMenu() {
+    graphContextMenu = new dhtmlXMenuObject();
+    graphContextMenu.renderAsContextMenu();
+    graphContextMenu.addContextZone("graph");
+    graphContextMenu.addNewChild(null, 0, "delete_node", "Delete Node");
+}
+
+function initializeNodesDataStore() {
+    nodesDataStore = new dhtmlXDataStore();
 }

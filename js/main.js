@@ -1,9 +1,12 @@
+window.dhx_globalImgPath="dhtmlx3/dhtmlxCombo/codebase/imgs/";
 initializeLayout();
 initializeMenu();
 initializeWindow();
 initializeNodeAdditionForm();
 initializeServiceCreationWindow();
 initializeServiceCreationTabbbar();
+initializeGraphContextMenu();
+initializeNodesDataStore();
 serviceCreationWindow.hide();
 
 cytoObject = cytoscape({
@@ -52,4 +55,14 @@ cytoObject.on('tap', function(e) {
     if (e.target === cytoObject) {
         linkArray = [];
     }
+})
+
+// cytoObject.on('mousemove', 'node', function(e) {
+//     const node = e.target;
+//     console.log(node);
+// })
+
+cytoObject.on('cxttap', 'node', function(e) {
+    const node = e.target;
+    console.log(node);
 })

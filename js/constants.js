@@ -10,8 +10,8 @@ const WINDOW_PROPS = {
 const SERVICE_CREATION_WINDOW_PROPS = {
     X: 100,
     Y: 100,
-    WIDTH: 800,
-    HEIGHT: 400
+    WIDTH: 1000,
+    HEIGHT: 500
 }
 
 const NODE_ADDITION_FORM_PROPS = [
@@ -38,7 +38,21 @@ const SERVICE_CREATION_FORM_PROPS = [
     },
 
     {
-        type: "input", label: "IP Address:", name: "ip"
+        type: "input", label: "Service Name:", name: "serviceName"
+    },
+
+    {
+        type: "combo", label: "Technology:", name: "technology",
+        options : [
+            {
+                text : ".1q/.1ad",
+                value : "DOT1Q_DOT1AD"
+            },
+            {
+                text : "MPLS-TP",
+                value : "MPLS_TP"
+            }
+        ]
     },
 
     {
