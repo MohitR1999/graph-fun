@@ -2,16 +2,28 @@ window.dhx_globalImgPath="dhtmlx3/dhtmlxCombo/codebase/imgs/";
 initializeLayout();
 initializeMenu();
 initializeWindow();
+initializeSideGrid();
 initializeNodeAdditionForm();
 initializeServiceCreationWindow();
 initializeServiceCreationTabbbar();
 initializeGraphContextMenu();
 initializeNodesDataStore();
+initializeLinkCreationWindow();
+initializeLinkCreationForm();
 serviceCreationWindow.hide();
+linkCreationWindow.hide();
+
+fetch(`${BASE_URL}/nodes`)
+.then(res => res.json())
+.then(data => {
+    console.log(data);
+    nodesDataStore.parse(data);
+})
+
 
 cytoObject = cytoscape({
     container: document.getElementById("graph"),
-    elements : fetch(`${BASE_URL}/data`, {
+    elements : fetch(`${BASE_URL}/graph/data`, {
         method : "GET",
     }).then(res => res.json()),
     style: [ // the stylesheet for the graph
@@ -42,7 +54,7 @@ cytoObject = cytoscape({
     }
 
 });
-
+/*
 let linkArray = [];
 
 const collection = cytoObject.collection();
@@ -57,12 +69,8 @@ cytoObject.on('tap', function(e) {
     }
 })
 
-// cytoObject.on('mousemove', 'node', function(e) {
-//     const node = e.target;
-//     console.log(node);
-// })
-
 cytoObject.on('cxttap', 'node', function(e) {
     const node = e.target;
     console.log(node);
 })
+*/

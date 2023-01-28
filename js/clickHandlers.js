@@ -6,33 +6,14 @@ function menuClickHandler(id) {
         serviceCreationWindow.show();
     }
     else if (id == "file_new_link") {
-        if (linkArray.length == 2) {
-            const requestBody = {
-                source : linkArray[0],
-                target : linkArray[1]
-            };
-            fetch(`${BASE_URL}/addlink`, {
-                method : 'POST',
-                headers : {
-                    'Content-Type' : 'application/json'
-                },
-                body : JSON.stringify(requestBody)
-            }).then(res => res.json())
-            .then(data => {
-                console.log(data);
-                cytoObject.add(data);
-                linkArray = [];
-            })
-            .catch(err => {
-                console.log(err);
-            })
-        }
+        linkCreationWindow.show();
     }
 }
 
 function nodeAdditionFormHandler(id) {
     if (id == "proceed") {
         const ip = nodeAdditionForm.getItemValue("ip");
+        sideGridCell.progressOn();
         if (ip) {
             const requestBody = { ip };
             fetch(`${BASE_URL}/addnode`, {
@@ -43,12 +24,14 @@ function nodeAdditionFormHandler(id) {
                 body : JSON.stringify(requestBody)
             }).then(res => res.json())
             .then(data => {
+                sideGridCell.progressOff();
                 console.log(data);
-                cytoObject.add(data);
+                nodesDataStore.add(data);
                 nodeAdditionForm.clear();
                 nodeAdditionWizardBox.hide();
             })
             .catch(err => {
+                sideGridCell.progressOff();
                 console.log(err);
             })
         }
@@ -57,4 +40,20 @@ function nodeAdditionFormHandler(id) {
 
 function serviceCreationHandler(id) {
     console.log(id);
+}
+
+function sourceNodeChangeEventHandler() {
+    const selectedIP = sourceCombo.getSelectedValue();
+    const arrayOfPorts = nodesDataStore.serialize().filter(node => node.ip == selectedIP)[0].ports;
+    sourcePortCombo.clearAll(true);
+    sourcePortDataStore.clearAll();
+    sourcePortDataStore.parse(arrayOfPorts);
+}
+
+function targetNodeChangeEventHandler() {
+    const selectedIP = targetCombo.getSelectedValue();
+    const arrayOfPorts = nodesDataStore.serialize().filter(node => node.ip == selectedIP)[0].ports;
+    targetPortCombo.clearAll(true);
+    targetPortDataStore.clearAll();
+    targetPortDataStore.parse(arrayOfPorts);
 }

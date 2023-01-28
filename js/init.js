@@ -7,6 +7,7 @@ function initializeLayout() {
     sideGridCell = appLayout.cells("a");
     sideGridCell.hideHeader();
     sideGridCell.setWidth(400);
+    sideGridCell.attachObject("grid");
     appLayout.dhxWins.setEffect("move", true);
     appLayout.dhxWins.setEffect("resize", true);
 }
@@ -21,9 +22,8 @@ function initializeMenu() {
     menuBar.addNewChild("file", 1, "file_new_link", "Create a link", false);
     menuBar.addNewChild("file", 2, "file_new_service", "Create a service", false);
     // Add child options for View
-    menuBar.addNewChild("view", 0, "file_view_nodes", "View all nodes", false);
-    menuBar.addNewChild("view", 1, "file_view_links", "View all links", false);
-    menuBar.addNewChild("view", 2, "file_view_services", "View all services", false);
+    menuBar.addNewChild("view", 0, "file_view_links", "View all links", false);
+    menuBar.addNewChild("view", 1, "file_view_services", "View all services", false);
     menuBar.attachEvent("onClick", menuClickHandler);
 }
 
@@ -52,6 +52,17 @@ function initializeServiceCreationWindow() {
     });
 }
 
+function initializeLinkCreationWindow() {
+    linkCreationWindow = appLayout.dhxWins.createWindow("createLink", LINK_CREATION_WINDOW_PROPS.X, LINK_CREATION_WINDOW_PROPS.Y, LINK_CREATION_WINDOW_PROPS.WIDTH, LINK_CREATION_WINDOW_PROPS.HEIGHT);
+    linkCreationWindow.setText("Create Link");
+    linkCreationWindow.attachStatusBar().setText("Create a link specifying source and destination attributes");
+    linkCreationWindow.center();
+    linkCreationWindow.keepInViewport(true);
+    linkCreationWindow.attachEvent("onClose", function (id) {
+        linkCreationWindow.hide();
+    });
+}
+
 function initializeNodeAdditionForm() {
     nodeAdditionForm = nodeAdditionWizardBox.attachForm();
     nodeAdditionForm.loadStruct(NODE_ADDITION_FORM_PROPS, "json");
@@ -62,6 +73,21 @@ function initializeServiceCreationForm() {
     serviceCreationForm = serviceCreationWindow.attachForm();
     serviceCreationForm.loadStruct(SERVICE_CREATION_FORM_PROPS, "json");
     serviceCreationForm.attachEvent("onButtonClick", serviceCreationHandler);
+}
+
+function initializeLinkCreationForm() {
+    linkCreationForm = linkCreationWindow.attachForm();
+    linkCreationForm.loadStruct(LINK_CREATION_FORM_PROPS, "json");
+    sourceCombo = linkCreationForm.getCombo("source");
+    targetCombo = linkCreationForm.getCombo("target");
+    sourceCombo.attachEvent("onChange", sourceNodeChangeEventHandler);
+    targetCombo.attachEvent("onChange", targetNodeChangeEventHandler);
+    sourcePortCombo = linkCreationForm.getCombo("sourcePort");
+    targetPortCombo = linkCreationForm.getCombo("targetPort");
+    sourceCombo.sync(nodesDataStore);
+    targetCombo.sync(nodesDataStore);
+    sourcePortCombo.sync(sourcePortDataStore);
+    targetPortCombo.sync(targetPortDataStore);
 }
 
 function initializeServiceCreationTree() {
@@ -101,4 +127,23 @@ function initializeGraphContextMenu() {
 
 function initializeNodesDataStore() {
     nodesDataStore = new dhtmlXDataStore();
+    sourcePortDataStore = new dhtmlXDataStore();
+    targetPortDataStore = new dhtmlXDataStore();
+    nodesDataStore.data.scheme({
+        $init : function (obj) {
+            obj.value = obj.ip;
+            obj.text = obj.ip;
+            obj.ports = obj.ports.map(function(port) {
+                return {
+                    value : port,
+                    text : port
+                };
+            });
+        }
+    })
+    sideGrid.sync(nodesDataStore);
+}
+
+function initializeSideGrid() {
+    sideGrid = new dhtmlXGridObject(SIDE_GRID_PROPS);
 }
