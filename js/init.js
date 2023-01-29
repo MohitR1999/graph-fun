@@ -46,7 +46,6 @@ function initializeServiceCreationWindow() {
     serviceCreationWindow.attachStatusBar().setText("Create a service specifying certain attributes");
     serviceCreationWindow.center();
     serviceCreationWindow.keepInViewport(true);
-    // serviceCreationWindow.hide();
     serviceCreationWindow.attachEvent("onClose", function (id) {
         serviceCreationWindow.hide();
     });
@@ -55,10 +54,12 @@ function initializeServiceCreationWindow() {
 function initializeLinkCreationWindow() {
     linkCreationWindow = appLayout.dhxWins.createWindow("createLink", LINK_CREATION_WINDOW_PROPS.X, LINK_CREATION_WINDOW_PROPS.Y, LINK_CREATION_WINDOW_PROPS.WIDTH, LINK_CREATION_WINDOW_PROPS.HEIGHT);
     linkCreationWindow.setText("Create Link");
-    linkCreationWindow.attachStatusBar().setText("Create a link specifying source and destination attributes");
+    linkCreationStatusBar = linkCreationWindow.attachStatusBar();
+    linkCreationStatusBar.setText("Create a link specifying source and destination attributes");
     linkCreationWindow.center();
     linkCreationWindow.keepInViewport(true);
     linkCreationWindow.attachEvent("onClose", function (id) {
+        linkCreationForm.reset();
         linkCreationWindow.hide();
     });
 }
@@ -88,6 +89,7 @@ function initializeLinkCreationForm() {
     targetCombo.sync(nodesDataStore);
     sourcePortCombo.sync(sourcePortDataStore);
     targetPortCombo.sync(targetPortDataStore);
+    linkCreationForm.attachEvent("onButtonClick", linkCreationFormHandler);
 }
 
 function initializeServiceCreationTree() {

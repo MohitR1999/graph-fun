@@ -142,3 +142,12 @@ const SIDE_GRID_PROPS = {
     skin: "dhx_skyblue",
     image_path: "dhtmlx3/dhtmlxGrid/codebase/imgs/",
 }
+
+const VALIDATION_ERRORS = {
+    BAD_IP : "Invalid IP address provided",
+    BAD_SOURCE : "Invalid source IP address provided",
+    BAD_TARGET : "Invalid target IP address provided",
+    BAD_SOURCE_PORT : "Invalid source port provided",
+    BAD_TARGET_PORT : "Invalid target port provided",
+    SOURCE_EQUALS_TARGET : "Source and Destination cannot be the same"
+}

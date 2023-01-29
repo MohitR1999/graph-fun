@@ -22,3 +22,4 @@ let sourceCombo = null;
 let targetCombo = null;
 let sourcePortCombo = null;
 let targetPortCombo = null;
+let linkCreationStatusBar = null;
