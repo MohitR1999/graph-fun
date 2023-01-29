@@ -1,4 +1,5 @@
 const BASE_URL = 'http://localhost:3000'
+const SOCKET_URL = 'http://localhost:9000'
 
 const WINDOW_PROPS = {
     X: 100,

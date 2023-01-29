@@ -10,6 +10,7 @@ initializeGraphContextMenu();
 initializeNodesDataStore();
 initializeLinkCreationWindow();
 initializeLinkCreationForm();
+initializeSocket();
 serviceCreationWindow.hide();
 linkCreationWindow.hide();
 

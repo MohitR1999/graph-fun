@@ -95,13 +95,13 @@ function linkCreationFormHandler(id) {
             }).then(res => res.json())
             .then(data => {
                 console.log(data);
-                linkCreationForm.reset();
                 linkCreationForm.unlock();
+                linkCreationForm.reset();
                 linkCreationWindow.hide();
             }).catch(err => {
                 console.log(err);
-                linkCreationForm.reset();
                 linkCreationForm.unlock();
+                linkCreationForm.reset();
                 linkCreationWindow.hide();
             }) 
         }

@@ -149,3 +149,13 @@ function initializeNodesDataStore() {
 function initializeSideGrid() {
     sideGrid = new dhtmlXGridObject(SIDE_GRID_PROPS);
 }
+
+function initializeSocket() {
+    socket = io(`${SOCKET_URL}`);
+    socket.on("node", function(node) {
+        cytoObject.add(node);
+    });
+    socket.on("link", function(link) {
+        cytoObject.add(link);
+    });
+}
